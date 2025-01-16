@@ -14,7 +14,7 @@
         <div class="header">
             <div class="w-50">
                 <p> <span class="fw-bold" th:text="${currentUser.getEmail()}"></span> with roles: 
-                    <span th:text="${#strings.listJoin(currentUser.roles, ' ')}"></span>
+                    <span id="roles" th:text="${#strings.listJoin(currentUser.roles, ' ')}"></span>
                 </p>
             </div>
             <div class="w-50" style="text-align: end">
@@ -28,7 +28,12 @@
         <div id="content">
             <div class="row content_row_main">
                 <div class="col-3 content_col_1">
-                    <div class="block_blue p-2 text-white">User</div>
+                    <div id="link_admin" class="block_blue p-2">
+                        <a style="text-decoration: none; color: white;" th:href="@{/admin}">Admin</a>
+                    </div>
+                    <div class="p-2 text-primary">
+                        <a id="link_user" style="text-decoration: none;" th:href="@{/user}">User</a>
+                    </div>
                 </div><!-- end column 1 -->
                 <div class="col-9 content_col_2">
                     <div class="block_for_tab">
@@ -70,6 +75,7 @@
         </div>
     </content>
     <script th:src="@{js/bootstrap.bundle.min.js}"></script>
+    <script type="module" th:src="@{js/main.js}"></script>
 </body>
 
 </html>

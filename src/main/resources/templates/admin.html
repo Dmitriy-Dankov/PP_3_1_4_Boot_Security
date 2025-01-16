@@ -28,8 +28,12 @@
         <div id="content">
             <div class="row content_row_main">
                 <div class="col-3 content_col_1">
-                    <div class="block_blue p-2 text-white">Admin</div>
-                    <div class="p-2 text-primary"><a style="text-decoration: none;">User</a></div>
+                    <div class="block_blue p-2">
+                        <a id="link_admin" style="text-decoration: none; color: white" th:href="@{/admin}">Admin</a>
+                    </div>
+                    <div class="p-2 text-primary">
+                        <a id="link_user" style="text-decoration: none;" th:href="@{/user}">User</a>
+                    </div>
                 </div><!-- end column 1 -->
                 <div class="col-9 content_col_2">
                     <div class="block_for_tab">
@@ -104,7 +108,7 @@
                                             placeholder="Password">
 
                                         <label for="roles" class="form-label">Role</label>
-                                        <select required name="roles" class="form-control"
+                                        <select multiple required name="roles" class="form-control"
                                             aria-label="select example" size="2">
                                             <option value="ADMIN">ADMIN</option>
                                             <option value="USER">USER</option>
@@ -141,7 +145,7 @@
                                 <input readonly type="text" name="id" class="form-control" aria-describedby="id">
                                 
                                 <label for="name" class="form-label">First name</label>
-                                <input readonly type="text" name="name" class="form-control" placeholder="First name">
+                                <input required type="text" name="name" class="form-control" placeholder="First name">
 
                                 <label for="surname" class="form-label">Last name</label>
                                 <input required type="text" name="surname" class="form-control" placeholder="Last name">
@@ -158,10 +162,11 @@
                                     placeholder="Password">
 
                                 <label for="roles" class="form-label">Role</label>
-                                <select name="roles" class="form-control" aria-label="multiple select example" size="2">
+                                <select multiple name="roles" class="form-control" aria-label="multiple select example" size="2">
                                     <option value="ADMIN">ADMIN</option>
                                     <option value="USER">USER</option>
                                 </select>
+                                <input id="clear_edit" type="reset" style="display: none;">
                             </form>
                         </div><!-- end edit -->
 
@@ -188,7 +193,7 @@
                                     placeholder="Password">
                                 
                                 <label for="roles" class="form-label">Role</label>
-                                <select name="roles" disabled="disabled" class="form-control"
+                                <select multiple name="roles" disabled="disabled" class="form-control"
                                     aria-label="select example" size="2">
                                     <option value="ADMIN">ADMIN</option>
                                     <option value="USER">USER</option>
@@ -198,7 +203,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary my_close" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary delete_form_btn" form="id_del"
                             style="background: #DC3545; border: none; display: none;">Delete</button>
 

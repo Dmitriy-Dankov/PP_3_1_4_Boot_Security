@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.model.User;
 import ru.kata.spring.boot_security.repositorie.UserRepo;
-import ru.kata.spring.boot_security.security.UserDetailsImpl;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
@@ -49,10 +48,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     @Transactional
     public void update(User user) {
-        if (userRepo.existsByName(user.getName())) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userRepo.save(user);
-        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepo.save(user);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User user = findByName(name);
 
         if (user != null) {
-            return new UserDetailsImpl(user);
+            return user;
         }
 
         throw new UsernameNotFoundException("User '" + name + "' not found");
