@@ -36,7 +36,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())).authorizeHttpRequests(
+                .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler()))
+                .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("/admin", "/api/**").hasAuthority("ADMIN")
                                 .requestMatchers("/user").hasAnyAuthority("USER", "ADMIN")
